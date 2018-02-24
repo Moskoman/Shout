@@ -8,6 +8,7 @@ end
 
 function love.update (dt)
 	player:update()
+	personManager:update()
 end
 
 function love.draw ()
