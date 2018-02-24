@@ -12,8 +12,7 @@ end
 function love.draw ()
 
 	for i, v in ipairs (personManager.Persons) do
-		love.graphics.setColor (v.color)
-		love.graphics.rectangle ("fill", v.posX, v.posY, v.size, v.size)
+		love.graphics.draw (v.image, v.posX, v.posY, 0, v.size, v.size)
 	end
 
 

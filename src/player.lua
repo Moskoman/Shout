@@ -34,8 +34,7 @@ end
 function player:Shout ()
 	for i, v in ipairs (personManager.Persons) do
 		if (player.posX + player.shoutRange >= v.posX  and player.posX - player.shoutRange < v.posX) and (player.posY + player.shoutRange >= v.posY and player.posY - player.shoutRange < v.posY) then
-			v:ChangeColor (1)
-			print ("foi")
+			v.image = v:ChangeColor (1)
 		end
 	end
 end

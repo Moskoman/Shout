@@ -2,28 +2,31 @@ person = {}
 
 person.posX = 60
 person.posY = 60
-person.size = 20
+person.size = 1
 person.color = {255, 0, 0}
+person.image = love.graphics.newImage ("assets/red.png")
 
 function person:New (posX, posY, color)
 
-	a = a or {}
-	setmetatable (a, self)
+	newPerson = {}
+	setmetatable (newPerson, self)
 	self.__index = self
-	self.posX = posX
-	self.posY = posY
-	self.size = person.size
-	self.color = color
-	return a
+	newPerson.posX = posX
+	newPerson.posY = posY
+	newPerson.size = person.size
+	newPerson.image = person:ChangeColor(color)
+	return newPerson
 
 end
 
 function person:ChangeColor (newColor)
 	if (newColor == 0) then
-		self.color = {0, 0, 255}
+		image = love.graphics.newImage ("assets/red.png")
 	elseif (newColor == 1) then
-		self.color = {255, 255, 255}
+		image = love.graphics.newImage ("assets/blue.png")
 	end
+
+	return image
 
 end
 
