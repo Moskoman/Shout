@@ -1,7 +1,6 @@
 player = {} 
 
-player.width = 20
-player.height = 20
+player.size = 20
 player.posX = 40
 player.posY = 40
 player.speed = 3
@@ -24,6 +23,14 @@ function player:CheckInput ()
 	if (love.keyboard.isDown("d")) then
 		player.posX = player.posX + player.speed
 	end
+	if (love.keyboard.isDown ("space")) then 
+		print "shout"
+	end
+
+end
+
+function player:Shout ()
+
 end
 
 return player
