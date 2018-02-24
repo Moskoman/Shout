@@ -1,5 +1,6 @@
 player = require ("src.player")
 personManager = require ("src.personManager")
+background = love.graphics.newImage ("assets/background.png")
 
 function love.load () 
 	PopulateLevel ()
@@ -10,6 +11,8 @@ function love.update (dt)
 end
 
 function love.draw ()
+
+	love.graphics.draw (background, -30, -10)
 
 	for i, v in ipairs (personManager.Persons) do
 		love.graphics.draw (v.image, v.posX, v.posY, 0, v.size, v.size)
