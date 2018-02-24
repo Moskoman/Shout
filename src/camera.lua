@@ -1,0 +1,3 @@
+camera = {}
+
+return camera 

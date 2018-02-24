@@ -1,5 +1,6 @@
 player = require ("src.player")
 personManager = require ("src.personManager")
+camera = require ("src.camera")
 background = love.graphics.newImage ("assets/background.png")
 
 function love.load () 

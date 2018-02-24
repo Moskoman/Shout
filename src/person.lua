@@ -51,9 +51,32 @@ end
 function person:FollowCentralPath ()
 
 	if (self.followCounter == 1) then
-		self.posX = self.posX + 2
+		if (self.posX < 784) then
+			self.posX = self.posX + 2
+		else
+			self.followCounter = 2
+		end
+
 	elseif (self.followCounter == 2) then
-		self.posY = self.posY + person.speed
+		if (self.posY < 430) then
+			self.posY = self.posY + person.speed
+		else
+			self.followCounter = 3
+		end
+
+	elseif (self.followCounter == 3) then
+		if (self.posX > 160) then
+			self.posX = self.posX - person.speed
+		else 
+			self.followCounter = 4
+		end
+
+	elseif (self.followCounter == 4) then
+		if (self.posY > 200) then
+			self.posY = self.posY - person.speed
+		else
+			self.followCounter = 1
+		end
 	end
 
 end
