@@ -14,6 +14,8 @@ end
 
 function love.draw ()
 
+	camera:set()
+
 	love.graphics.draw (background, -30, -10)
 
 	for i, v in ipairs (personManager.Persons) do
@@ -23,6 +25,9 @@ function love.draw ()
 
 	love.graphics.setColor (255, 255, 255)
 	love.graphics.rectangle ("fill", player.posX, player.posY, player.size, player.size)
+
+	camera:unset()
+
 end 
 
 function PopulateLevel()
