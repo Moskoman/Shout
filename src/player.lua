@@ -1,9 +1,11 @@
 player = {} 
+personManager = require ("src.personManager")
 
 player.size = 20
 player.posX = 40
 player.posY = 40
 player.speed = 3
+player.shoutRange = 20
 
 function player:update ()
 	self.CheckInput ()
@@ -24,13 +26,18 @@ function player:CheckInput ()
 		player.posX = player.posX + player.speed
 	end
 	if (love.keyboard.isDown ("space")) then 
-		print "shout"
+		player:Shout ()
 	end
 
 end
 
 function player:Shout ()
-
+	for i, v in ipairs (personManager.Persons) do
+		if (player.posX + player.shoutRange >= v.posX  and player.posX - player.shoutRange < v.posX) and (player.posY + player.shoutRange >= v.posY and player.posY - player.shoutRange < v.posY) then
+			v:ChangeColor (1)
+			print ("foi")
+		end
+	end
 end
 
 return player

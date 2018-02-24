@@ -2,7 +2,7 @@ personManager = {}
 person = require ("src.person")
 
 personManager.Persons = {}
-personManager.PersonsPosition = {{100, 200}}
+personManager.PersonsPosition = {{100, 200, {255, 0, 0}}}
 
 function personManager:MakeNewPerson (posX, posY, color)
 	a = {}
