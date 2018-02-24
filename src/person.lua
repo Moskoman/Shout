@@ -14,7 +14,6 @@ function person:New (posX, posY, color)
 	setmetatable (newPerson, self)
 	self.__index = self
 
-	print (color)
 	if (color == 1) then
 		newPerson.isBlue = true
 	else

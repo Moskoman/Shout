@@ -32,6 +32,8 @@ function love.draw ()
 		love.graphics.draw (v.image, camera.x + v.offsetX, camera.y + v.offsetY, 0, 1 , 1)
 	end
 
+	HUD:UpdateScore()
+
 	camera:unset()
 
 end 

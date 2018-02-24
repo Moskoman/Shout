@@ -14,7 +14,6 @@ function camera:set (cameraPositionX, playerY)
 	love.graphics.scale (1/self.scaleX, 1/self.scaleY)
 	love.graphics.translate (-self.x, -self.y)
 	camera:FollowPlayer()
-	print (camera.y)
 
 end
 
