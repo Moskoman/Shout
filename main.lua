@@ -24,9 +24,7 @@ function love.draw ()
 		love.graphics.draw (v.image, v.posX, v.posY, 0, v.size, v.size)
 	end
 
-
-	love.graphics.setColor (255, 255, 255)
-	love.graphics.rectangle ("fill", player.posX, player.posY, player.size, player.size)
+	love.graphics.draw (player.image, player.posX, player.posY, 0, 1, 1)
 
 	for i, v in ipairs (HUD.stuffToDraw) do
 		love.graphics.draw (v.image, camera.x + v.offsetX, camera.y + v.offsetY, 0, 1 , 1)

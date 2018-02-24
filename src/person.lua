@@ -5,7 +5,7 @@ person.posY = 60
 person.size = 1
 person.image = love.graphics.newImage ("assets/red.png")
 person.followCounter = 1
-person.isBlue = false
+person.isWhite = false
 person.speed = 2
 
 function person:New (posX, posY, color)
@@ -14,10 +14,10 @@ function person:New (posX, posY, color)
 	setmetatable (newPerson, self)
 	self.__index = self
 
-	if (color == 1) then
-		newPerson.isBlue = true
+	if (color == 2) then
+		newPerson.isWhite = true
 	else
-		newPerson.isBlue = false
+		newPerson.isWhite = false
 	end
 	
 	newPerson.posX = posX
@@ -29,7 +29,7 @@ function person:New (posX, posY, color)
 end
 
 function person:update ()
-	if (self.isBlue) then
+	if (self.isWhite) then
 		 self:FollowCentralPath()
 	end
 
@@ -39,8 +39,12 @@ function person:ChangeColor (newColor)
 	if (newColor == 0) then
 		image = love.graphics.newImage ("assets/red.png")
 	elseif (newColor == 1) then
+		image = love.graphics.newImage ("assets/green.png")
+	elseif (newColor == 2) then
+		image = love.graphics.newImage ("assets/white.png")
+		self.isWhite = true
+	elseif (newColor == 3) then
 		image = love.graphics.newImage ("assets/blue.png")
-		self.isBlue = true
 	end
 
 	return image

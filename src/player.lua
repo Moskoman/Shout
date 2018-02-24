@@ -5,7 +5,8 @@ player.size = 20
 player.posX = 40
 player.posY = 40
 player.speed = 3
-player.shoutRange = 20
+player.shoutRange = 30
+player.image = love.graphics.newImage ("assets/white.png")
 
 function player:update ()
 	self.CheckInput ()
@@ -34,9 +35,13 @@ end
 function player:Shout ()
 	for i, v in ipairs (personManager.Persons) do
 		if (player.posX + player.shoutRange >= v.posX  and player.posX - player.shoutRange < v.posX) and (player.posY + player.shoutRange >= v.posY and player.posY - player.shoutRange < v.posY) then
-			v.image = v:ChangeColor (1)
+			v.image = v:ChangeColor (2)
 		end
 	end
+end
+
+function player:CheckCollider ()
+
 end
 
 return player

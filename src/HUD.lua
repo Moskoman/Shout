@@ -31,11 +31,11 @@ end
 function HUD:UpdateScore ()
 
 	for i, v in ipairs (personManager.Persons) do
-		if (v.isBlue) then
+		if (v.isWhite) then
 			HUD.currentScore = HUD.currentScore + 1
 		end
 	end
-	self.currentScore = 100 * self.currentScore/#personManager.Persons
+	self.currentScore = math.floor(100 * self.currentScore/#personManager.Persons)
 	love.graphics.print (self.currentScore .. "/100%", camera.x + mail.offsetX + 50, camera.y + mail.offsetY + 30)
 	HUD.currentScore = 0
 
