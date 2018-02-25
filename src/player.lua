@@ -44,8 +44,4 @@ function player:Shout ()
 	end
 end
 
-function player:CheckCollider ()
-
-end
-
 return player

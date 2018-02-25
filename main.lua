@@ -6,14 +6,29 @@ HUD = require("src.HUD")
 menu = love.graphics.newImage ("assets/menu.png")
 background = love.graphics.newImage ("assets/background.png")
 shoutImage = love.graphics.newImage ("assets/shout.png")
+inGameMusic = love.audio.newSource ("assets/In_Game_Music.mp3")
 endingSong = love.audio.newSource ("assets/Cr00k3d - Being_Green (Muppets Cover).mp3")
 
+local menuState = true
 local playState = false
+local endingState = false
+local endingStartingTime = 0
+local endingCounter = 1
+ending = {}
+ending[1] = love.graphics.newImage("assets/ending_1.png")
+ending[2] = love.graphics.newImage ('assets/ending_2.png')
+ending[3] = love.graphics.newImage ("assets/ending_3.png")
+ending[4] = love.graphics.newImage ("assets/ending_4.png")
+ending[5] = love.graphics.newImage ("assets/ending_5.png")
+ending[6] = love.graphics.newImage ("assets/ending_6.png")
+
 
 
 function love.load () 
 	GlobalTimer = 0
-
+	menuState = true
+	inGameMusic:play()
+	endingCounter = 1
 	GameLoad()
 
 end
@@ -24,7 +39,7 @@ function love.update (dt)
 
 	if (playState) then
 		GameUpdate()
-	else
+	elseif (menuState) then
 		MenuUpdate()
 	end
 
@@ -36,6 +51,8 @@ function love.draw ()
 
 	if (playState) then
 		GameDraw()
+	elseif (endingState) then
+		DrawEnding(endingCounter)
 	end
 
 end 
@@ -98,6 +115,7 @@ function GameUpdate ()
 
 	player:update()
 	personManager:update()
+	CheckEndGameConditions()
 
 end
 
@@ -120,5 +138,27 @@ function MenuUpdate ()
 		GameLoad()
 		playState = true
 	end
+
+end
+
+function CheckEndGameConditions()
+
+	if (whiteGang.population == 100) then
+		playState = false
+		menuState = false
+		endingState = true
+		endingStartingTime = GlobalTimer
+		inGameMusic:stop()
+		endingSong:play()
+	end
+end
+
+function DrawEnding (counter)
+
+	if (counter < 6 and GlobalTimer > endingStartingTime + (counter * 4)) then
+		endingCounter = endingCounter + 1
+	end
+
+	love.graphics.draw (ending[endingCounter], 0, 0)
 
 end

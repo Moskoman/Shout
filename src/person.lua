@@ -115,7 +115,9 @@ end
 function person:Shout ()
 	for i, v in ipairs (personManager.Persons) do
 		if (self.posX + 30 >= v.posX  and self.posX - 30 < v.posX) and (self.posY + 30 >= v.posY and self.posY - 30 < v.posY) then
-			v.image = v:ChangeColor (self.gangColor)
+			if (v.gangColor ~= self.gangColor) then
+				v.image = v:ChangeColor (self.gangColor)
+			end
 		end
 	end
 
