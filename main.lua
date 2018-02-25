@@ -53,9 +53,6 @@ function love.draw ()
 
 		love.graphics.setColor (255, 255, 255, 255)
 
-		print (i)
-
-
 	HUD:UpdateScore()
 
 	camera:unset()

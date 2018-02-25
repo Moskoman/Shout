@@ -41,7 +41,7 @@ function person:ChangeColor (newColor)
 		image = love.graphics.newImage ("assets/red.png")
 		self.gangColor = 0
 	elseif (newColor == 1) then
-		image = love.graphics.newImage ("assets/green.png")
+		image = love.graphics.newImage ("assets/blue.png")
 		self.gangColor = 1
 	elseif (newColor == 2) then
 		image = love.graphics.newImage ("assets/white.png")
@@ -49,7 +49,7 @@ function person:ChangeColor (newColor)
 		self.isWhite = true
 	elseif (newColor == 3) then
 		self.gangColor = 3
-		image = love.graphics.newImage ("assets/blue.png")
+		image = love.graphics.newImage ("assets/green.png")
 	end
 
 	return image

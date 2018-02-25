@@ -73,6 +73,12 @@ function HUD:UpdateScore ()
 			end
 		end
 	end
+
+	love.graphics.print ("WHT: " .. whiteGang.population .. "/100%", camera.x + 30, camera.y + mail.offsetY + 36)
+	love.graphics.print ("RED: " .. redGang.population .. "/100%", camera.x + 130, camera.y + mail.offsetY + 36)
+	love.graphics.print ("BLU: " .. blueGang.population .. "/100%", camera.x + 230, camera.y + mail.offsetY + 36)
+	love.graphics.print ("GRE: " .. greenGang.population .. "/100%", camera.x + 330, camera.y + mail.offsetY + 36)
+
 end
 
 return HUD
