@@ -5,11 +5,14 @@ camera = require ("src.camera")
 HUD = require("src.HUD")
 background = love.graphics.newImage ("assets/background.png")
 shoutImage = love.graphics.newImage ("assets/shout.png")
+endingSong = love.audio.newSource ("assets/Cr00k3d - Being_Green (Muppets Cover).mp3")
+
 
 function love.load () 
 	GlobalTimer = 0
 	PopulateLevel ()
 	HUD:load()
+	endingSong:play()
 end
 
 function love.update (dt)
