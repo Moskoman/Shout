@@ -24,6 +24,17 @@ function HUD:load ()
 	influence_icon.offsetX = camera.x + mail.offsetX + 60
 	influence_icon.offsetY = camera.y + mail.offsetY 
 	table.insert (HUD.stuffToDraw, influence_icon)
+
+	barsOffset = 20
+
+	whiteGangBar = {}
+	redGangBar = {}
+	blueGangBar = {}
+	greenGangBar = {}
+	whiteGangPopulation = {}
+	redGangPopulation = {}
+	blueGangPopulation = {}
+	greenGangPopulation = {}
 				
 
 end
@@ -38,6 +49,11 @@ function HUD:UpdateScore ()
 	self.currentScore = math.floor(100 * self.currentScore/#personManager.Persons)
 	love.graphics.print (self.currentScore .. "/100%", camera.x + mail.offsetX + 50, camera.y + mail.offsetY + 30)
 	HUD.currentScore = 0
+	whiteGangPopulation = math.floor (100 * #personManager.gangs.white/#personManager.Persons)
+	redGangPopulation = math.floor (100 * #personManager.gangs.red/#personManager.Persons)
+	blueGangPopulation = math.floor (100 * #personManager.gangs.blue/#personManager.Persons)
+	greenGangPopulation = math.floor (100 * #personManager.gangs.green/#personManager.Persons)
+	
 
 end
 

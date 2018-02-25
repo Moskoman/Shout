@@ -44,11 +44,6 @@ function personManager:updateGangs ()
 		table.insert (personManager.gangs.green, v)
 		end
 	end
-
-	print ("red =" .. #personManager.gangs.red)
-	print ("blue =" .. #personManager.gangs.blue)
-	print ("white =" .. #personManager.gangs.white)
-	print ("green =" .. #personManager.gangs.green)
 end
 
 
