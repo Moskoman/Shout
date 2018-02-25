@@ -3,6 +3,7 @@ personManager = require ("src.personManager")
 camera = require ("src.camera")
 HUD = require("src.HUD")
 background = love.graphics.newImage ("assets/background.png")
+shoutImage = love.graphics.newImage ("assets/shout.png")
 
 function love.load () 
 	PopulateLevel ()
@@ -22,9 +23,13 @@ function love.draw ()
 
 	for i, v in ipairs (personManager.Persons) do
 		love.graphics.draw (v.image, v.posX, v.posY, 0, v.size, v.size)
+
 	end
 
 	love.graphics.draw (player.image, player.posX, player.posY, 0, 1, 1)
+	if (player.isShouting) then
+		love.graphics.draw (shoutImage, player.posX - 14, player.posY - 16, 0, 1, 1)
+	end
 
 	for i, v in ipairs (HUD.stuffToDraw) do
 		love.graphics.draw (v.image, camera.x + v.offsetX, camera.y + v.offsetY, 0, 1 , 1)

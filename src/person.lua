@@ -7,6 +7,7 @@ person.image = love.graphics.newImage ("assets/red.png")
 person.followCounter = 1
 person.isWhite = false
 person.speed = 2
+person.gangColor = 0
 
 function person:New (posX, posY, color)
 
@@ -23,7 +24,7 @@ function person:New (posX, posY, color)
 	newPerson.posX = posX
 	newPerson.posY = posY
 	newPerson.size = person.size
-	newPerson.image = self:ChangeColor(color)
+	newPerson.image = newPerson:ChangeColor(color)
 	return newPerson
 
 end
@@ -38,12 +39,16 @@ end
 function person:ChangeColor (newColor)
 	if (newColor == 0) then
 		image = love.graphics.newImage ("assets/red.png")
+		self.gangColor = 0
 	elseif (newColor == 1) then
 		image = love.graphics.newImage ("assets/green.png")
+		self.gangColor = 1
 	elseif (newColor == 2) then
 		image = love.graphics.newImage ("assets/white.png")
+		self.gangColor = 2	
 		self.isWhite = true
 	elseif (newColor == 3) then
+		self.gangColor = 3
 		image = love.graphics.newImage ("assets/blue.png")
 	end
 

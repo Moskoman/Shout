@@ -7,6 +7,7 @@ player.posY = 40
 player.speed = 3
 player.shoutRange = 30
 player.image = love.graphics.newImage ("assets/white.png")
+player.isShouting = false
 
 function player:update ()
 	self.CheckInput ()
@@ -28,6 +29,9 @@ function player:CheckInput ()
 	end
 	if (love.keyboard.isDown ("space")) then 
 		player:Shout ()
+		player.isShouting = true
+	else
+		player.isShouting = false
 	end
 
 end
