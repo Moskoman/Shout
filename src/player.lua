@@ -15,16 +15,16 @@ function player:update ()
 end
 
 function player:CheckInput ()
-	if (love.keyboard.isDown ("s")) then
+	if (love.keyboard.isDown ("down")) then
 		player.posY = player.posY + player.speed
 	end
-	if (love.keyboard.isDown("w")) then
+	if (love.keyboard.isDown("up")) then
 		player.posY = player.posY - player.speed
 	end
-	if (love.keyboard.isDown("a")) then
+	if (love.keyboard.isDown("left")) then
 		player.posX = player.posX - player.speed
 	end
-	if (love.keyboard.isDown("d")) then
+	if (love.keyboard.isDown("right")) then
 		player.posX = player.posX + player.speed
 	end
 	if (love.keyboard.isDown ("space")) then 
