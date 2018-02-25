@@ -1,3 +1,4 @@
+GlobalTimer = 0
 player = require ("src.player")
 personManager = require ("src.personManager")
 camera = require ("src.camera")
@@ -6,11 +7,13 @@ background = love.graphics.newImage ("assets/background.png")
 shoutImage = love.graphics.newImage ("assets/shout.png")
 
 function love.load () 
+	GlobalTimer = 0
 	PopulateLevel ()
 	HUD:load()
 end
 
 function love.update (dt)
+	GlobalTimer = GlobalTimer + dt
 	player:update()
 	personManager:update()
 end
@@ -23,7 +26,9 @@ function love.draw ()
 
 	for i, v in ipairs (personManager.Persons) do
 		love.graphics.draw (v.image, v.posX, v.posY, 0, v.size, v.size)
-
+		if (v.isShouting) then
+			love.graphics.draw (shoutImage, v.posX - 14, v.posY - 16, 0, 1, 1)
+		end
 	end
 
 	love.graphics.draw (player.image, player.posX, player.posY, 0, 1, 1)

@@ -8,6 +8,11 @@ person.followCounter = 1
 person.isWhite = false
 person.speed = 2
 person.gangColor = 0
+person.canShout = true
+person.isShouting = false
+person.shoutCD = 2
+person.lastShoutTime = 0
+person.shoutEnd = 0
 
 function person:New (posX, posY, color)
 
@@ -25,14 +30,32 @@ function person:New (posX, posY, color)
 	newPerson.posY = posY
 	newPerson.size = person.size
 	newPerson.image = newPerson:ChangeColor(color)
+	newPerson.isShouting = false
+	newPerson.canShout = true
 	return newPerson
 
 end
 
 function person:update ()
+
+	self:ResetShoutCoolDown ()
+
 	if (self.isWhite) then
 		 self:FollowCentralPath()
 	end
+
+	if (self.canShout) then
+		if (math.random(1000) >= 999) then
+			self.isShouting = true
+		end
+	end
+
+	if (self.isShouting == true) then
+		self.isShouting = true
+		self:Shout ()
+	end
+
+
 
 end
 
@@ -87,6 +110,29 @@ function person:FollowCentralPath ()
 		end
 	end
 
+end
+
+function person:Shout ()
+	for i, v in ipairs (personManager.Persons) do
+		if (self.posX + 30 >= v.posX  and self.posX - 30 < v.posX) and (self.posY + 30 >= v.posY and self.posY - 30 < v.posY) then
+			v.image = v:ChangeColor (self.gangColor)
+		end
+	end
+
+	self.shoutEnd = self.shoutEnd + 1
+
+	if (self.shoutEnd >= 20) then
+		self.canShout = false
+		self.isShouting = false
+		self.lastShoutTime = GlobalTimer
+	end
+end
+
+function person:ResetShoutCoolDown ()
+	if (self.lastShoutTime + self.shoutCD > GlobalTimer) then
+		self.canShout = true
+		self.shoutEnd = 0
+	end
 end
 
 return person
