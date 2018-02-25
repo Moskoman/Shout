@@ -6,6 +6,7 @@ HUD = require("src.HUD")
 menu = love.graphics.newImage ("assets/menu.png")
 background = love.graphics.newImage ("assets/background.png")
 shoutImage = love.graphics.newImage ("assets/shout.png")
+gangBarImage = love.graphics.newImage ("assets/gangBar.png")
 inGameMusic = love.audio.newSource ("assets/In_Game_Music.mp3")
 endingSong = love.audio.newSource ("assets/Cr00k3d - Being_Green (Muppets Cover).mp3")
 
@@ -104,7 +105,9 @@ function GameDraw ()
 		love.graphics.setColor (HUD.gangBars[4].color)
 		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 6 * HUD.gangBars[4].population, 30)
 
+
 		love.graphics.setColor (255, 255, 255, 255)
+		love.graphics.draw (gangBarImage, camera.x + barsOffset, camera.y + barsOffset, 0)
 
 	HUD:UpdateScore()
 
