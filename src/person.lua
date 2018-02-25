@@ -45,7 +45,7 @@ function person:update ()
 	end
 
 	if (self.canShout) then
-		if (math.random(1000) >= 999) then
+		if (math.random(1000) >= 985) then
 			self.isShouting = true
 		end
 	end

@@ -3,7 +3,7 @@ personManager = require ("src.personManager")
 
 player.size = 20
 player.posX = 40
-player.posY = 40
+player.posY = 100
 player.speed = 3
 player.shoutRange = 30
 player.image = love.graphics.newImage ("assets/white.png")

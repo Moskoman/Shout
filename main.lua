@@ -3,25 +3,53 @@ player = require ("src.player")
 personManager = require ("src.personManager")
 camera = require ("src.camera")
 HUD = require("src.HUD")
+menu = love.graphics.newImage ("assets/menu.png")
 background = love.graphics.newImage ("assets/background.png")
 shoutImage = love.graphics.newImage ("assets/shout.png")
 endingSong = love.audio.newSource ("assets/Cr00k3d - Being_Green (Muppets Cover).mp3")
 
+local playState = false
+
 
 function love.load () 
 	GlobalTimer = 0
-	PopulateLevel ()
-	HUD:load()
-	endingSong:play()
+
+	GameLoad()
+
 end
 
 function love.update (dt)
 	GlobalTimer = GlobalTimer + dt
-	player:update()
-	personManager:update()
+
+
+	if (playState) then
+		GameUpdate()
+	else
+		MenuUpdate()
+	end
+
 end
 
 function love.draw ()
+
+	MenuDraw()
+
+	if (playState) then
+		GameDraw()
+	end
+
+end 
+
+function PopulateLevel()
+	for i, v in ipairs (personManager.PersonsPosition) do
+		posX = v[1]
+		posY = v[2]
+		color = v[3]
+		personManager:MakeNewPerson (posX, posY, color)
+	end
+end
+
+function GameDraw ()
 
 	camera:set()
 
@@ -64,14 +92,33 @@ function love.draw ()
 	HUD:UpdateScore()
 
 	camera:unset()
+end
 
-end 
+function GameUpdate ()
 
-function PopulateLevel()
-	for i, v in ipairs (personManager.PersonsPosition) do
-		posX = v[1]
-		posY = v[2]
-		color = v[3]
-		personManager:MakeNewPerson (posX, posY, color)
+	player:update()
+	personManager:update()
+
+end
+
+function GameLoad ()
+
+	PopulateLevel ()
+	HUD:load()
+
+end
+
+function MenuDraw()
+	
+	love.graphics.draw (menu, 0, 0)
+
+end
+
+function MenuUpdate ()
+
+	if (love.keyboard.isDown ("space")) then
+		GameLoad()
+		playState = true
 	end
+
 end
