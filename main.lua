@@ -42,19 +42,19 @@ function love.draw ()
 
 	-- Gang Bar Monkeyness
 		love.graphics.setColor (111,111,111)
-		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 4 * 100, 30)
+		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 6 * 100, 30)
 
 		love.graphics.setColor (HUD.gangBars[1].color)
-		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 4 * HUD.gangBars[1].population, 30)
+		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 6 * HUD.gangBars[1].population, 30)
 		
 		love.graphics.setColor (HUD.gangBars[2].color)
-		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 4 * HUD.gangBars[2].population, 30)
+		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 6 * HUD.gangBars[2].population, 30)
 
 		love.graphics.setColor (HUD.gangBars[3].color)
-		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 4 * HUD.gangBars[3].population, 30)
+		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 6 * HUD.gangBars[3].population, 30)
 
 		love.graphics.setColor (HUD.gangBars[4].color)
-		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 4 * HUD.gangBars[4].population, 30)
+		love.graphics.rectangle ("fill", camera.x + barsOffset, camera.y + barsOffset, 1 + 6 * HUD.gangBars[4].population, 30)
 
 		love.graphics.setColor (255, 255, 255, 255)
 

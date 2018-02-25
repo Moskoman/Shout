@@ -9,23 +9,7 @@ HUD.gangBars = {}
 
 function HUD:load () 
 
-	upgrades = {}
-	upgrades.image = love.graphics.newImage ("assets/upgrades.png")
-	upgrades.offsetX = 470
-	upgrades.offsetY = 20
-	table.insert (HUD.stuffToDraw, upgrades)
 
-	mail = {}
-	mail.image = love.graphics.newImage ("assets/mail.png")
-	mail.offsetX = 520
-	mail.offsetY = 20
-	table.insert (HUD.stuffToDraw, mail)
-
-	influence_icon = {}
-	influence_icon.image = love.graphics.newImage ("assets/influence_icon.png")
-	influence_icon.offsetX = camera.x + mail.offsetX + 60
-	influence_icon.offsetY = camera.y + mail.offsetY 
-	table.insert (HUD.stuffToDraw, influence_icon)
 
 	barsOffset = 20
 
@@ -50,14 +34,7 @@ end
 
 function HUD:UpdateScore ()
 
-	for i, v in ipairs (personManager.Persons) do
-		if (v.isWhite) then
-			HUD.currentScore = HUD.currentScore + 1
-		end
-	end
-	self.currentScore = math.floor(100 * self.currentScore/#personManager.Persons)
-	love.graphics.print (self.currentScore .. "/100%", camera.x + mail.offsetX + 50, camera.y + mail.offsetY + 30)
-	HUD.currentScore = 0
+
 	whiteGang.population = math.floor (100 * #personManager.gangs.white / #personManager.Persons)
 	redGang.population = math.floor (100 * #personManager.gangs.red / #personManager.Persons)
 	blueGang.population = math.floor (100 * #personManager.gangs.blue / #personManager.Persons)
@@ -74,10 +51,10 @@ function HUD:UpdateScore ()
 		end
 	end
 
-	love.graphics.print ("WHT: " .. whiteGang.population .. "/100%", camera.x + 30, camera.y + mail.offsetY + 36)
-	love.graphics.print ("RED: " .. redGang.population .. "/100%", camera.x + 130, camera.y + mail.offsetY + 36)
-	love.graphics.print ("BLU: " .. blueGang.population .. "/100%", camera.x + 230, camera.y + mail.offsetY + 36)
-	love.graphics.print ("GRE: " .. greenGang.population .. "/100%", camera.x + 330, camera.y + mail.offsetY + 36)
+	love.graphics.print ("WHT: " .. whiteGang.population .. "/100%", camera.x + 30, camera.y + 56)
+	love.graphics.print ("RED: " .. redGang.population .. "/100%", camera.x + 180, camera.y + 56)
+	love.graphics.print ("BLU: " .. blueGang.population .. "/100%", camera.x + 330, camera.y + 56)
+	love.graphics.print ("GRE: " .. greenGang.population .. "/100%", camera.x + 480, camera.y + 56)
 
 end
 
